@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask_bcrypt import Bcrypt
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
@@ -19,5 +20,7 @@ db = SQLAlchemy(metadata = metadata)
 migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
+
+bcrypt = Bcrypt(app)
 
 CORS(app)

@@ -1,4 +1,4 @@
-from random import choice as rc
+from random import randint, choice as rc
 from faker import Faker
 from faker_vehicle import VehicleProvider
 import datetime
@@ -18,7 +18,8 @@ def create_vehicles():
         v = Vehicle(
             make = fake.vehicle_make(),
             model = fake.vehicle_model(),
-            year = fake.vehicle_year()
+            year = fake.vehicle_year(),
+            vehicle_img= fake.image_url()
         )
         vehicles.append(v)
     return vehicles
@@ -28,10 +29,16 @@ def create_customers():
     customers = []
     for _ in range(5):
         c = Customer(
+            username = fake.first_name() + str(randint(1,1000)),
             first_name =fake.first_name(),
             last_name = fake.last_name(),
-            age = rc(range(21, 65))
+            dob = fake.date_of_birth(minimum_age=21, maximum_age=62),
+            address = fake.streetAddress(),
+            city = fake.location.city(),
+            state = fake.location.state(),
+            zipcode = fake.location.zipCode()
         )
+        c.password_hash = c.username + 'password'
         customers.append(c)
     return customers
 
