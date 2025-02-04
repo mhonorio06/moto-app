@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from flask import make_response, jsonify, request
+from flask import make_response, jsonify, request, session
 from flask_restful import Resource
-
+from sqlalchemy.exc import IntegrityError
 from config import db, app, api
 
 from models import Vehicle, Customer, Booking
@@ -25,68 +25,62 @@ class Vehicles(Resource):
 
 api.add_resource(Vehicles, '/vehicles')
 
-class Customers(Resource):
-    def get(self):
-        customers = Customer.query.all()
+class VehicleByID(Resource):
+    def get(self, id):
+        vehicle = Vehicle.query.filter(Vehicle.id == id).first()
 
-        customer_dict = [customer.to_dict(rules=('-bookings',)) for customer in customers]
+        
 
-        response = make_response(
-            jsonify(customer_dict), 200
-        )
-
-        return response
+class Signup(Resource):
     
     def post(self):
         json = request.get_json()
 
-        try:
-            customer = Customer(
-                first_name = json["first_name"],
-                last_name = json["last_name"],
-                age = json["age"]
-            )
+        customer = Customer(
+            username = json['username'],
+            first_name = json['first_name'],
+            last_name = json['last_name'],
+            dob = json['dob'],
+            address = json['address'],
+            city = json['city'],
+            state = json['state'],
+            zipcode = json['zipcode']
+        )
+        customer.password_hash = json['password']
 
+        try :
             db.session.add(customer)
             db.session.commit()
 
-            response_dict = customer.to_dict(rules=('-bookings',))
+            session['customer_id'] = customer.id
 
-            return make_response(response_dict, 201)
-        except:
-            return {'errors': ['validation errors']}, 400
+            return customer.to_dict(), 201
         
-api.add_resource(Customers, '/customers')
+        except IntegrityError:
 
-class CustomersByID(Resource):
-    def get(self, id):
-        customer = Customer.query.filter(Customer.id == id).first()
+            return {'error' : '422 Unprocessable'}, 422
+api.add_resource(Signup, '/signup')
 
-        if customer == None:
-            return {"error": "Customer not found"}, 404
-        return make_response(customer.to_dict(), 200)
-    
-    def patch(self, id):
+class Login(Resource):
+    def post(self):
         json = request.get_json()
-        customer = Customer.query.filter(Customer.id == id).first()
 
-        if customer == None:
-            return {"error" : "Customer not found"}, 404
-        
-        try:
-            for attr in json:
-                setattr(customer, attr, json[attr])
+        username = json['username'],
+        password = json['password']
 
-                db.session.add(customer)
-                db.session.commit()
+        customer = Customer.query.filter(Customer.username == username).first()
 
-            response_dict = customer.to_dict(rules=('-bookings',))
+        if customer:
+            if customer.authenticate(password):
+                session['customer_id'] = customer.id
+                return customer.to_dict(), 200
+api.add_resource(Login, '/login')
 
-            return make_response(response_dict, 202)
-        except:
-            return {'errors': ['validation errors']}, 400
+class Logout(Resource):
+    def delete(self):
+        session['customer_id'] = None
 
-api.add_resource(CustomersByID, '/customers/<int:id>')
+        return {}, 204
 
 if __name__== "__main__":
     app.run(port=5555, debug=True)

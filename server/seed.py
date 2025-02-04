@@ -11,7 +11,6 @@ fake = Faker()
 
 fake.add_provider(VehicleProvider)
 
-
 def create_vehicles():
     vehicles = []
     for _ in range(5):
@@ -33,10 +32,10 @@ def create_customers():
             first_name =fake.first_name(),
             last_name = fake.last_name(),
             dob = fake.date_of_birth(minimum_age=21, maximum_age=62),
-            address = fake.streetAddress(),
-            city = fake.location.city(),
-            state = fake.location.state(),
-            zipcode = fake.location.zipCode()
+            address = fake.street_address(),
+            city = fake.city(),
+            state = fake.state(),
+            zipcode = fake.zipcode()
         )
         c.password_hash = c.username + 'password'
         customers.append(c)
