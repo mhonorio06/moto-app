@@ -7,6 +7,16 @@ from config import db, app, api
 
 from models import Vehicle, Customer, Booking
 
+@app.before_request
+def check_if_logged_in():
+    access_list = [
+        'signup',
+        'login',
+        'check_session'
+    ]
+    if (request.endpoint) not in access_list and (not session.get('customer_id')):
+        return {"error" : "401 Unauthorized"}, 401
+
 @app.route('/')
 def index():
     return '<h1>Moto-Lease-App</h1>'
@@ -29,7 +39,13 @@ class VehicleByID(Resource):
     def get(self, id):
         vehicle = Vehicle.query.filter(Vehicle.id == id).first()
 
-        
+        if vehicle == None:
+            return {'error' : 'Vehicle not found'}, 404
+        return make_response(
+            vehicle.to_dict(rules= ('-bookings',)), 200
+        )
+
+api.add_resource(VehicleByID, '/vehicles/<int:id>')
 
 class Signup(Resource):
     
@@ -59,7 +75,6 @@ class Signup(Resource):
         except IntegrityError:
 
             return {'error' : '422 Unprocessable'}, 422
-api.add_resource(Signup, '/signup')
 
 class Login(Resource):
     def post(self):
@@ -74,13 +89,23 @@ class Login(Resource):
             if customer.authenticate(password):
                 session['customer_id'] = customer.id
                 return customer.to_dict(), 200
-api.add_resource(Login, '/login')
 
 class Logout(Resource):
     def delete(self):
         session['customer_id'] = None
 
         return {}, 204
+
+class CheckSession(Resource):
+    def get(self):
+        customer = Customer.query.filter(Customer.id == session['customer_id']).first()
+
+        return customer.to_dict(), 200
+    
+api.add_resource(Login, '/login', endpoint = 'login')
+api.add_resource(Logout, '/logout', endpoint = 'logout')
+api.add_resource(Signup, '/signup', endpoint = 'signup')
+api.add_resource(CheckSession, '/check_session', endpoint = 'check_session')
 
 if __name__== "__main__":
     app.run(port=5555, debug=True)

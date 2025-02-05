@@ -30,7 +30,7 @@ class Customer(db.Model, SerializerMixin):
     _password_hash = db.Column(db.String, nullable=False)
     first_name = db.Column(db.String) 
     last_name = db.Column(db.String)
-    dob = db.Column(db.Integer)
+    dob = db.Column(db.String, nullable=False)
     address = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)
