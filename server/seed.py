@@ -18,7 +18,7 @@ def create_vehicles():
             make = fake.vehicle_make(),
             model = fake.vehicle_model(),
             year = fake.vehicle_year(),
-            vehicle_img= fake.image_url()
+            vehicle_img= "https://images.pexels.com/photos/2071882/pexels-photo-2071882.jpeg"
         )
         vehicles.append(v)
     return vehicles

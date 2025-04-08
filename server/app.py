@@ -7,15 +7,15 @@ from config import db, app, api
 
 from models import Vehicle, Customer, Booking
 
-@app.before_request
-def check_if_logged_in():
-    access_list = [
-        'signup',
-        'login',
-        'check_session'
-    ]
-    if (request.endpoint) not in access_list and (not session.get('customer_id')):
-        return {"error" : "401 Unauthorized"}, 401
+# @app.before_request
+# def check_if_logged_in():
+#     access_list = [
+#         'signup',
+#         'login',
+#         'check_session'
+#     ]
+#     if (request.endpoint) not in access_list and (not session.get('customer_id')):
+#         return {"error" : "401 Unauthorized"}, 401
 
 @app.route('/')
 def index():

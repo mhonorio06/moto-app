@@ -1,0 +1,67 @@
+* {
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+.registration-page{
+    background: url("https://blog.verisign.com/wp-content/uploads/Verisign-SRS-25-Year-Retrospective.png"), no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+
+
+}
+.app-icon {
+    object-fit: fill;
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+}
+.wrapper {
+    width: 600px;
+    height: 600px;
+    border: 2px solid black;
+    align-items: center;
+    background: transparent;
+    color: black;
+    border-radius: 20px;
+    padding: 50px;
+    position: relative;
+    left: 300px;
+}
+
+.wrapper h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+form .reg-input{
+   position: relative;
+   width: 100%;
+   height: 40px;
+   margin: 20px 0;
+   padding: 5px;
+}
+
+.reg-input input{
+    width: 100%;
+    height: 100%;
+    background: white;
+    font-size: 20px;
+    color: black;
+}
+.wrapper button{
+    width: 100%;
+    height: 40px;
+    border-radius: 25px;
+    font-weight: 700px;
+    border: none;
+    outline: none;
+    background: white;
+    box-shadow : 0 0 10px black;
+    margin: 20px solid black;
+    position: relative;
+    top: 50px;
+}

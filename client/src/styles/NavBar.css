@@ -1,0 +1,72 @@
+nav {
+    background-color: pink;
+  }
+.login-link {
+  position: relative;
+  float: right;
+  font-size: 20px;
+  left: 155px;
+  bottom: 17px;
+  text-decoration: none;
+  color: white;
+}
+.nav-link{
+    position: relative;
+    float: right;
+    color: white;
+    font-size: 23px;
+    padding: 10px;
+    text-decoration: none;
+    right: 225px;
+    bottom: 25px;
+}
+.drop-btn {
+    color: white;
+    padding: 10px;
+    font-size: 23px;
+    border: none;
+    position: relative;
+    left: 1125px;
+    bottom: 25px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .drop-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 1135px;
+    top: 10px;
+  }
+  
+  /* Links inside the dropdown */
+  .drop-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .nav-link:hover {
+    color: black;
+  }
+  .login-link:hover{
+    color: black;
+  }
+  /* Change color of dropdown links on hover */
+  .drop-content a:hover {background-color: #ddd;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .drop-content {display: block;}
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .drop-btn {color: black;}
