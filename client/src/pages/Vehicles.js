@@ -11,6 +11,7 @@ function Vehicles( {vehicles} ){
     }).map(v => {
         return (
             <VehicleCard key={v.id}
+                         id = {v.id}
                          vehicle = {v}/>
         )
     })

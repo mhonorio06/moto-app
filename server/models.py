@@ -65,6 +65,8 @@ class Booking(db.Model, SerializerMixin):
     __tablename__ = 'bookings'
 
     id = db.Column(db.Integer, primary_key= True)
+    check_in = db.Column(db.Time)
+    check_out = db.Column(db.Time)
     start_date = db.Column(db.Date)
     end_date = db.Column(db.Date)
     vehicle_id = db.Column(db.Integer, db.ForeignKey('vehicles.id'))

@@ -1,3 +1,6 @@
+.vehicles {
+    padding: 5px solid pink;
+}
 .column {
     float: left;
     width: 30%;
@@ -8,7 +11,7 @@
 
 .column img {
     width: 250px;
-    border: 2px solid;
+    border: 2px solid white;
     padding: 10px;
     border-radius: 5px;
 }
@@ -17,4 +20,15 @@ span {
     display: block;
     padding: 5px;
     color: white;
+}
+
+span .book-btn{
+    width: 200px;
+    height: 25px;
+    border-radius: 3px;
+}
+
+span .book-btn:hover{
+    background-color: grey;
+    cursor: pointer;
 }

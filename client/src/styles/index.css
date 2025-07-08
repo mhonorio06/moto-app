@@ -2,6 +2,7 @@ body {
   font-family: 'Courier New', Courier, monospace;
   justify-content: center;
   background-color: black;
+  color: white;
 }
 * { 
   margin: 0;

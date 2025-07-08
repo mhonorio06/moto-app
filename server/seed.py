@@ -45,8 +45,10 @@ def create_bookings(customers, vehicles):
     bookings = []
     for _ in range(5):
         b = Booking(
-            start_date = datetime.date(2025,1,1),
-            end_date = datetime.date(2026,1,1),
+            check_in = fake.time_object(),
+            check_out = fake.time_object(),
+            start_date = fake.date_time_this_year(),
+            end_date = fake.date_time_this_year(),
             vehicle_id = rc([vehicle.id for vehicle in vehicles]),
             customer_id = rc([customer.id for customer in customers])
         )

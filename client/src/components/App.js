@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Vehicles from '../pages/Vehicles';
+import VehiclePage from '../pages/VehiclePage';
+import BookingPage from '../pages/BookingPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/vehicles" element={<Vehicles vehicles={vehicles}/>}/>
+        <Route path="/vehicles/:id" element={<VehiclePage vehicles={vehicles}/>}/>
+        <Route path="/bookings/:id" element={<BookingPage vehicles={vehicles}/>}/>
       </Routes>
     </Router>
   )
