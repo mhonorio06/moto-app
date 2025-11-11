@@ -1,11 +1,15 @@
 import React from "react";
 import { useFormik } from "formik"
-import { basicSchema } from "../schemas/schema";
+import { basicSchema } from "../schemas";
 import '../styles/Register.css'
 
 function Register() {
 
-    const {values, handleChange} = useFormik({
+    function onSubmit(){
+        console.log("Submitted")
+    }
+
+    const {values, errors, handleChange} = useFormik({
     initialValues: {
         first_name : "",
         last_name : "",
@@ -16,8 +20,9 @@ function Register() {
         state : "",
         zipcode : "",
     },
-    validationSchema: basicSchema,
-})
+    validationSchema: basicSchema, onSubmit,
+    });
+    console.log(errors);
     return(
         <div className="registration-page">
         <div className="wrapper">
