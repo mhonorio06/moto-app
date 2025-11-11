@@ -1,5 +1,4 @@
 import React from "react";
-import "../styles/Home.css";
 import NavBar from "../components/NavBar";
 
 function Home() {
@@ -9,12 +8,12 @@ function Home() {
         <> 
             <NavBar/>
                <div className='welcome-text'>
-                    <h1>"Drive in Excellence... "</h1>
-                    <h1>"Arrive in Style"</h1>
-                </div>
-                <div className='welcome-img'>
-                <img src="https://blog.remove-bg.ai/wp-content/uploads/2024/03/background-car-editing-photo.png" alt="car-photo"/>
-                </div>
+                    <h1>Drive in Excellence...</h1>
+                    <h1>Arrive in Style</h1>
+                    <p>Here we welcome you to see the finest in luxury. Wherever your destination, we guarantee satisfaction!</p>
+               </div>
+                
+                
         </>
 
         

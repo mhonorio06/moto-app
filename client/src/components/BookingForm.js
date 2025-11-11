@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import "../styles/BookingForm.css";
+
 function BookingForm(){
 
     const formik = useFormik({

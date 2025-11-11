@@ -23,7 +23,7 @@ function Login(){
                 <button type='submit'> Login </button>
                 
                 <div className='register-link'>    
-                    <p>No account? <a href='/register'>Sign Up</a></p>
+                    <p> No account? <a href='/register'>Sign Up</a> </p>
                 </div>
             </div>
         </div>

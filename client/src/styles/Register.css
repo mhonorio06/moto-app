@@ -21,13 +21,13 @@
 }
 .wrapper {
     width: 600px;
-    height: 600px;
+    height: 650px;
     border: 2px solid black;
     align-items: center;
     background: transparent;
     color: black;
     border-radius: 20px;
-    padding: 50px;
+    padding: 80px;
     position: relative;
     left: 300px;
 }

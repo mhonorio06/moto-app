@@ -17,6 +17,7 @@
     height: 450px;
     background: transparent;
     border: 2px solid grey;
+    box-shadow: 0 0 10px;
     border-radius: 20px;
     color: white;
     padding: 40px;
@@ -85,12 +86,13 @@
     color: black;
     font-weight: 700;
   }
-  .register-link {
-    padding: 50px;
+  .wrapper .register-link {
     text-align: center;
-    color: white;
+    position: relative;
+    bottom: 350px;
   }
-  .register-link a{
+  
+  .register-link p, a{
     color: white;
     text-decoration: none;
   }
