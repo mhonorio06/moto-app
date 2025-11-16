@@ -9,6 +9,10 @@ nav{
   display: block;
   float: left;
   text-decoration: none;
+  color: black;
+}
+.vehicles {
+  color: black;
 }
 .dropdown{
   position: relative;

@@ -28,9 +28,10 @@
   }
   .wrapper .input-box{
     position: relative;
-    width: 100%;
+    width: 50%;
     height: 50px;
     margin: 30px 0;
+    left: 400px;
   }
   .input-box input {
     width: 100%;
@@ -53,6 +54,7 @@
     top: 50%;
     translate: 0 -50%;
     font-size: 16px;
+    color: white;
   }
   .remember-forgot {
     display: flex;
@@ -74,7 +76,7 @@
     text-decoration: underline;
   }
   .wrapper button{
-    width: 100%;
+    width: 50%;
     height: 45px;
     border-radius: 40px;
     background: white;
@@ -87,9 +89,12 @@
     font-weight: 700;
   }
   .wrapper .register-link {
+    width: 70%;
+    display: block;
     text-align: center;
     position: relative;
     bottom: 350px;
+    font-size: 1.5em;
   }
   
   .register-link p, a{
