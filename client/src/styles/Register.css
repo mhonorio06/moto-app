@@ -15,7 +15,7 @@
 }
 .wrapper {
     width: 100%;
-    height: 600px;
+    height: 690px;
     border: 5px solid black;
     margin: 10px;
     align-items: center;
@@ -31,15 +31,16 @@
     font-size: 36px;
 }
 
-form .reg-input{
+.reg-input{
    position: relative;
    width: 50%;
-   height: 40px;
+   height: 50px;
    margin: 30px 0;
    padding: 5px;
    color: white;
    display: block;
    float: left;
+   text-align: center;
 }
 
 .reg-input input{
@@ -50,7 +51,7 @@ form .reg-input{
     color: black;
 }
 .wrapper button{
-    width: 100%;
+    width: 50%;
     height: 40px;
     border-radius: 25px;
     font-weight: 700px;
@@ -61,6 +62,7 @@ form .reg-input{
     margin: 20px solid black;
     position: relative;
     top: 50px;
+    left: 300px;
 }
 input.input-error,
 select.input-error{
@@ -73,6 +75,7 @@ select.input-error{
     margin-top: 5px;
     position: relative;
     top: 10px;
+    left: 150px;
 }
 button:disabled{
     opacity: .35;
