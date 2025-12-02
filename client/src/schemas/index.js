@@ -3,6 +3,7 @@ import * as yup from "yup";
 const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
 
 export const basicSchema = yup.object().shape({
+    username : yup.string().min(5).required("Username must be at least 5 characters"),
     first_name : yup.string().required("First name is required"),
     last_name : yup.string().required("Last name is required"),
     password : yup

@@ -5,21 +5,40 @@ import CustomInput from "../components/CustomComponent";
 import { basicSchema } from "../schemas";
 
 
-const onSubmit = async(values, actions) =>{
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    actions.resetForm()
-    console.log(values)
-} 
-
 const Register = () => {
-        
+    
+    const onSubmit = async(values, actions) => {
+        // await new Promise((resolve) => setTimeout(resolve, 1000))
+
+        try {
+            const response = await fetch("http://localhost:3000/register", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json",
+                },
+                body : JSON.stringify(values, null, 2)
+            })
+            actions.resetForm()
+
+            if(response.ok) {
+                console.log("Form Submitted")
+            }
+            else {
+                console.error("Error occurrde while submitting", values, actions) 
+            }   
+        }
+        catch (error) {
+            console.error("Error occurred when submitting the form", actions)
+        }
+    }
+
     return (
     <div className="registration-page">
         <div className="wrapper">
             <h1>Moto-Leaze</h1>
             <>
                 <Formik 
-                    initialValues={{first_name: "", last_name: "", password: "",
+                    initialValues={{username: "", first_name: "", last_name: "", password: "",
                                     dob: "", address: "", city: "", state: "",
                                     zipcode: ""
                         }}
@@ -28,6 +47,12 @@ const Register = () => {
                     >
                         {({ isSubmitting }) => (
                     <Form>
+                        <CustomInput 
+                            label="Username"
+                            name = "username"
+                            type = "text"
+                            placeholder = "Enter Username"   
+                        />
                         <CustomInput 
                             label="First Name"
                             name = "first_name"
