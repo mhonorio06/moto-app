@@ -49,6 +49,7 @@
     background: white;
     font-size: 20px;
     color: black;
+    text-align: center;
 }
 .wrapper button{
     width: 50%;
@@ -71,11 +72,11 @@ select.input-error{
 .error-message{
     width: 50%;
     color: red;
-    font-size: 1.2em;
+    font-size: .8em;
     margin-top: 5px;
+    white-space: nowrap;
     position: relative;
-    top: 10px;
-    left: 150px;
+    left: 50px;
 }
 button:disabled{
     opacity: .35;
